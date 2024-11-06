@@ -46,6 +46,7 @@ function rollDice() {
   });
   updateDiceDisplay();
   rollCount++;
+  message.textContent = `Roll count: ${rollCount}`;
 }
 
 // Toggle hold status for dice
