@@ -2,33 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Yatzy Game</title>
-        <link rel="stylesheet" href="styles.css">
-        </head>
-        <body>
-          <div class="game-container">
-              <h1>Yatzy Game</h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yatzy Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Yatzy Game</h1>
 
-          <!-- Dice display area -->
-       <div class="dice-container" id="dice-container"></div>
+    <!-- Dice display area -->
+    <div class="dice-container" id="dice-container">
+      <!-- Dice elements will be dynamically added here -->
+    </div>
 
-         <!-- Buttons -->
-        <div class="controls">
-        <button id="roll-btn">Roll Dice</button>
-        <button id="end-turn-btn">End Turn</button>
+    <!-- Control buttons -->
+    <div class="controls">
+      <button id="roll-btn">Roll Dice</button>
+      <button id="end-turn-btn">End Turn</button>
+    </div>
+
+    <!-- Scorecard section -->
+    <div class="scorecard">
+      <h2>Scorecard</h2>
+      <!-- Individual score items will be added here dynamically -->
+      <div id="scorecard">
+        <!-- Example scorecard items -->
+        <div class="scorecard-item">
+          <span>Ones</span><span>0</span>
         </div>
-
-       <!-- Scorecard -->
-     <div class="scorecard">
-     <h2>Scorecard</h2>
-     <div id="scorecard"></div>
+        <div class="scorecard-item">
+          <span>Twos</span><span>0</span>
+        </div>
+        <!-- Additional score items can be dynamically inserted here -->
       </div>
+    </div>
 
-    <!-- Messages -->
-   <div id="message"></div>
-   </div>
+    <!-- Message area -->
+    <div id="message" class="message">
+      <!-- Success or fail messages will appear here dynamically -->
+    </div>
+  </div>
 
-    <script src="script.js"></script>
-    </body>
-    </html>
+  <script src="script.js"></script>
+</body>
+</html>
