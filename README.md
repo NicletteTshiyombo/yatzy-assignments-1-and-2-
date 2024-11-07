@@ -1,58 +1,155 @@
-# yatzy-assignments-1-and-2Yatz game.txt
+
 # Yatzy Game
- 
-A web-based Yatzy game implementation where players can roll dice, keep specific dice, and calculate scores based on standard Yatzy rules. This project is built with HTML, CSS, and JavaScript, featuring an intuitive UI and score tracking.
- 
-## Table of Contents
-- [Gameplay](#gameplay)
-- [Game Rules](#game-rules)
-- [Project Structure](#project-structure)
-- [Setup and Running the Game](#setup-and-running-the-game)
-- [Credits](#credits)
- 
----
- 
-## Gameplay
- 
-1. **Roll Dice**: Click the "Roll Dice" button to roll five dice.
-2. **Hold Dice**: Click on specific dice to keep them between rolls.
-3. **Roll Limit**: You may roll up to 3 times per turn.
-4. **End Turn**: Click "End Turn" to calculate your scores for each category (e.g., Three of a Kind, Full House, Yatzy).
-5. **Score Calculation**: Your scorecard will update based on the final dice configuration.
- 
-## Game Rules
- 
-The scoring follows standard Yatzy rules:
-- **Three of a Kind**: Sum of all dice if at least three dice show the same value.
-- **Four of a Kind**: Sum of all dice if at least four dice show the same value.
-- **Full House**: 25 points for three of one number and two of another.
-- **Small Straight**: 30 points for a sequence of four (e.g., 1-2-3-4).
-- **Large Straight**: 40 points for a sequence of five (e.g., 2-3-4-5-6).
-- **Yatzy**: 50 points if all five dice show the same value.
-- **Chance**: Sum of all dice, no restrictions.
- 
-The game ends after each turn’s score is calculated. Players can continue playing by rolling and scoring again.
- 
-## Project Structure
- 
-The main files for this project are:
-- `index.html`: The HTML file that contains the game structure and UI elements.
-- `styles.css`: The CSS file for styling and layout.
-- `script.js`: The JavaScript file that manages game state, dice rolls, score calculation, and UI updates.
- 
-## Setup and Running the Game
- 
-To run the game:
-1. Clone or download the project folder.
-2. Open `index.html` in a web browser.
-3. Play the game by following the [Gameplay](#gameplay) instructions.
- 
-### Game Components
-- **Dice Container**: Displays current dice values and lets you click to hold dice.
-- **Controls**: Buttons for "Roll Dice" and "End Turn."
-- **Scorecard**: Displays the score for each category, updating automatically at the end of each turn.
-- **Messages**: Provides feedback (e.g., “Roll the dice!” or “End of turn. Scores calculated!”).
- 
-## Credits
- 
-Developed by Niclette. This project was created as part of an exercise to practice HTML, CSS, and JavaScript by implementing a simplified version of the classic Yatzy game.
+
+An interactive Yatzy game built with HTML, CSS, JavaScript, Node.js, and Express. This game allows players to roll dice, hold specific dice, and calculate scores based on Yatzy rules, with server-side logic managing the game state.
+
+## Features
+
+- **Roll Dice**: Roll five dice and generate random values.
+- **Hold Dice**: Click on specific dice to hold them, preventing them from re-rolling.
+- **Calculate Score**: Sum of all dice values as a placeholder scoring method.
+- **Client-Server Communication**: Game state management and calculations are handled by a Node.js and Express server.
+
+Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14+ recommended)
+- [Express.js](https://expressjs.com/) (installed via npm)
+
+Setup Instructions
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/yatzy-game.git
+   cd yatzy-game
+
+2. Install Dependencies: Install server dependencies (Express):
+
+npm install express cors
+
+
+3. Run the Server: Start the Node.js server:
+
+node server.js
+
+The server should now be running on http://localhost:3000.
+
+
+4. Open the Client: Open index.html in a web browser to play the game.
+
+
+
+Project Structure
+
+yatzy-game/
+├── index.html           # HTML file for the Yatzy game interface
+├── styles.css           # CSS file for styling the game UI
+├── script.js            # Client-side JavaScript for UI interaction
+├── server.js            # Node.js and Express server for game state
+└── README.md            # Project documentation
+
+API Endpoints
+
+POST /roll
+
+Rolls all dice that are not held and returns the updated game state.
+
+Response:
+
+{
+  "diceValues": [3, 6, 2, 1, 4],
+  "heldDice": [false, true, false, false, true],
+  "score": 0
+}
+
+
+POST /hold
+
+Toggles the "held" status of a die specified by its index.
+
+Request:
+
+{
+  "index": 2
+}
+
+Response:
+
+{
+  "diceValues": [3, 6, 2, 1, 4],
+  "heldDice": [false, true, true, false, true],
+  "score": 0
+}
+
+
+POST /score
+
+Calculates the current score based on the sum of the dice values.
+
+Response:
+
+{
+  "score": 16
+}
+
+
+Game Instructions
+
+1. Click the Roll Dice button to roll all dice. Dice values will display between 1 and 6.
+
+
+2. Click on individual dice to "hold" them, preventing them from rolling again.
+
+
+3. Click Roll Dice again to roll only the dice that are not held.
+
+
+4. Once satisfied, click End Turn to calculate and display the score based on the current dice values.
+
+
+
+Code Overview
+
+Client (JavaScript - script.js)
+
+updateGameState(): Fetches the latest dice values from the server.
+
+toggleHold(): Sends a request to toggle the hold state of a specific die.
+
+calculateScore(): Calls the server to compute the score.
+
+updateDiceDisplay(): Updates dice values and displays the held state in the UI.
+
+
+Server (Node.js - server.js)
+
+POST /roll: Rolls dice and updates the game state.
+
+POST /hold: Toggles the hold state for a specific die.
+
+POST /score: Calculates and returns the score.
+
+
+Technologies Used
+
+Frontend: HTML, CSS, JavaScript
+
+Backend: Node.js, Express
+
+API Communication: Fetch API (AJAX)
+
+
+Future Enhancements
+
+Implement full Yatzy scoring rules (e.g., three-of-a-kind, full house).
+
+Add player score history and reset functionality.
+
+Enhance UI/UX for better gameplay experience.
+
+
+License
+
+This project is open-source and available under the MIT License.
+
+This `README.md` file provides a comprehensive guide to understanding, setting up, and running the Yatzy game, along with detailed explanations of API endpoints and the project structure.
+
